@@ -20,6 +20,7 @@
 
 a {
   text-decoration: underline;
+  cursor: none;
 }
 
 body {
@@ -146,25 +147,27 @@ header nav h1 a {
 }
 header nav button {
   z-index: 400;
+  cursor: none;
 }
-header nav button svg rect {
-  fill: var(--black);
-  transform-box: view-box;
-  transform-origin: 93.75% 50%;
-  transition: transform 0.3s ease;
-  will-change: transform;
+header nav button svg line {
+  stroke: var(--black);
+  stroke-width: 20;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s ease;
 }
 header nav button svg {
   height: 1.75vw;
   width: 1.75vw;
   max-height: 30px;
   max-width: 30px;
+  fill: var(--black);
 }
 header nav button.active .line-mid {
-  transform: scaleX(0.67);
+  stroke-dashoffset: -66;
 }
 header nav button.active .line-bot {
-  transform: scaleX(0.5);
+  stroke-dashoffset: -100;
 }
 header nav .menu_container {
   display: none;
@@ -176,6 +179,7 @@ header nav .menu_container {
   text-align: right;
   color: var(--black);
   font-size: var(--regFontSize);
+  font-weight: 500;
   height: 100vh;
   z-index: 200;
   flex-direction: column;
@@ -468,17 +472,18 @@ section.closing {
 .about .about_content .heading {
   font-size: var(--headingFontSize);
   font-weight: 900;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1;
 }
 .about .about_content p {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   font-size: var(--regFontSize);
 }
 .about .about_content .exhibitions_list {
   display: flex;
   flex-direction: column;
   color: var(--black);
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .about .about_content .exhibitions_list li {
   overflow: hidden;

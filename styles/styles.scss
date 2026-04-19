@@ -18,6 +18,7 @@
 
 a{
     text-decoration: underline;
+    cursor: none;
 }
 
 body{
@@ -134,13 +135,14 @@ header{
 
         button {
             z-index: 400;
+            cursor: none;
 
-            svg rect {
-                fill: var(--black);
-                transform-box: view-box;
-                transform-origin: 93.75% 50%;
-                transition: transform 0.3s ease;
-                will-change: transform;
+            svg line {
+                stroke: var(--black);
+                stroke-width: 20;
+                stroke-dasharray: 200;
+                stroke-dashoffset: 0;
+                transition: stroke-dashoffset 0.3s ease;
             }
 
             svg{
@@ -148,11 +150,12 @@ header{
                 width: 1.75vw;
                 max-height: 30px;
                 max-width: 30px;
+                fill: var(--black);
             }
 
             &.active {
-                .line-mid { transform: scaleX(0.67); }
-                .line-bot { transform: scaleX(0.5); }
+                .line-mid { stroke-dashoffset: -66; }
+                .line-bot { stroke-dashoffset: -100; }
             }
         }
 
@@ -166,6 +169,7 @@ header{
             text-align: right;
             color: var(--black);
             font-size: var(--regFontSize);
+            font-weight: 500;
             height: 100vh;
             z-index: 200;
             flex-direction: column;
@@ -469,11 +473,12 @@ section {
         .heading{
             font-size: var(--headingFontSize);
             font-weight: 900;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            line-height: 1;
         }
 
         p{
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             font-size: var(--regFontSize);
         }
         
@@ -481,7 +486,7 @@ section {
             display: flex;
             flex-direction: column;
             color: var(--black);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
 
             li{
                 overflow: hidden;
