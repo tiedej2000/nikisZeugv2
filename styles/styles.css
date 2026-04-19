@@ -468,6 +468,7 @@ section.closing {
   margin-top: 80px;
   margin-bottom: 40px;
   padding-right: 20px;
+  width: 100%;
 }
 .about .about_content .heading {
   font-size: var(--headingFontSize);

@@ -327,6 +327,7 @@ section {
     justify-content: space-between;
     background-color: var(--black);
     color: var(--white);
+
     svg{
         fill: var(--white);
     }
@@ -469,6 +470,7 @@ section {
         margin-top: 80px;
         margin-bottom: 40px;
         padding-right: 20px;
+        width: 100%;
 
         .heading{
             font-size: var(--headingFontSize);
