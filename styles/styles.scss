@@ -3,8 +3,8 @@
     --black: black;
     --lightBoxShadow: 0 0 8px rgba(0,0,0,0.05);
 
-    --headingFontSize: clamp(1rem, 2vw, 2.5rem);
-    --regFontSize: clamp(0.8rem, 1vw, 1.2rem);
+    --headingFontSize: clamp(1rem, 1.8vw, 2rem);
+    --regFontSize: clamp(0.8rem, 1vw, 1rem);
     --smallFontSize: clamp(0.6rem, 0.8vw, 0.875rem);
 }
 
@@ -38,8 +38,10 @@ body{
   user-select: none;
 
   img{
-    width: 20px;
-    height: 20px;
+    height: 1.25vw;
+    width: 1.25vw;
+    max-width: 30px;
+    max-height: 30px;
   }
 }
 
@@ -132,11 +134,20 @@ header{
 
         button {
             z-index: 400;
+
             svg rect {
-                transform-box: fill-box;
-                transform-origin: right center;
-                transition: transform 0.3s ease;
                 fill: var(--black);
+                transform-box: view-box;
+                transform-origin: 93.75% 50%;
+                transition: transform 0.3s ease;
+                will-change: transform;
+            }
+
+            svg{
+                height: 1.75vw;
+                width: 1.75vw;
+                max-height: 30px;
+                max-width: 30px;
             }
 
             &.active {
@@ -149,7 +160,7 @@ header{
             display: none;
             position: fixed;
             right: 0px;
-            padding: 0 20px 0 80px;
+            padding: 0 0px 0 60px;
             top: 50%;
             transform: translateY(-50%);
             text-align: right;
@@ -192,14 +203,18 @@ header{
                 }
             }
 
+            li{
+                padding-right: 20px;
+            }
+
             li span{
                 display: inline-block;
                 transform: translateX(0);
-                transition: all 0.3s ease;
+                transition: transform 0.3s ease;
+            }
 
-                &:hover{
-                    transform: translateX(-20px);
-                }
+            li:hover span{
+                transform: translateX(-20px);
             }
             
             #nightmode-toggle{
@@ -216,11 +231,19 @@ header{
 
                 .icon-sun{
                     display: block;
+                    height: 1.75vw;
+                    width: 1.75vw;
+                    max-height: 30px;
+                    max-width: 30px;
                 }
 
                 .icon-moon{
                     display: none;
                     fill: white;
+                    height: 1.75vw;
+                    width: 1.75vw;
+                    max-height: 30px;
+                    max-width: 30px;
                 }
             }
         }
@@ -268,16 +291,55 @@ section {
     }
 }
 
-.back-button{
+.back-button, .link-button, .submit-button{
     display: flex;
     gap: 5px;
     align-items: center;
-    margin-bottom: 20px; 
+    padding: 5px 10px;
+    margin: 20px 0 12px 0;
+    border: 1px solid var(--black);
+    font-size: var(--regFontSize);
+    width: fit-content;
+    color: var(--black);
+    background-color: var(--white);
 
     svg{
         height: 16px;
         width: 16px;
+        margin-right: 4px;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+        fill: var(--black);
     }
+
+    &:hover svg{
+        transform: translateX(-4px);
+    }
+}
+
+.link-button, .submit-button{
+    margin-top: 0px;
+    width: 100%;
+    justify-content: space-between;
+    background-color: var(--black);
+    color: var(--white);
+    svg{
+        fill: var(--white);
+    }
+
+    &:hover svg{
+        transform: translateX(4px);
+    }
+}
+
+.back-button{
+    position: absolute;
+    top: 70px;
+    left: 20px;
+}
+
+.submit-button{
+    margin-bottom: 0px;
 }
 
 .gallery{
@@ -324,12 +386,17 @@ section {
 }
 
 .projects{
-    height: 100%;
+    height: 100vh;
     width: 100vw;
     overflow-x: scroll;
     scrollbar-width: none;
-    padding: 125px 20px 0px 20px;
-    flex-direction: column;
+    padding: 140px 20px 0px 20px;
+    gap: 20px;
+    position: relative;
+
+    &.active{
+        display: flex;
+    }
 
     .project{
         width: 30vw;
@@ -364,18 +431,6 @@ section {
                     }
                 }
             }
-
-            .link-button{
-                display: flex;
-                gap: 5px;
-                align-items: center;
-                padding: 0px 20px 0px 0;
-
-                svg{
-                    height: 16px;
-                    width: 16px;
-                }
-            }
         }
     }
 }
@@ -384,6 +439,7 @@ section {
     height: 100%;
     width: 100vw;
     gap: 20px;
+    color: var(--black);
 
     &.active{
         display: flex;
@@ -404,10 +460,11 @@ section {
     .about_content{
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        max-height: 100vh;
+        overflow-y: scroll;
+        margin-top: 80px;
         margin-bottom: 40px;
         padding-right: 20px;
-        transition: padding-right 0.3s ease;
 
         .heading{
             font-size: var(--headingFontSize);
@@ -424,7 +481,7 @@ section {
             display: flex;
             flex-direction: column;
             color: var(--black);
-            margin-bottom: 80px;
+            margin-bottom: 20px;
 
             li{
                 overflow: hidden;
@@ -450,7 +507,7 @@ section {
 
                 &:hover .description{
                     padding: 12px 0;
-                    max-height: 140px;
+                    max-height: 160px;
                     opacity: 1;
                 }
             }
@@ -465,6 +522,8 @@ section {
                 margin: 0;
                 font-family: "Manrope", sans-serif;
                 cursor: none;
+                padding: 10px;
+                border: 1px solid var(--black);
                 margin-bottom: 20px;
 
                 input, textarea{
@@ -492,24 +551,6 @@ section {
                     border-bottom: none !important;
                     resize: none;
                 }
-
-                button{
-                    padding: 10px;
-                    background-color: var(--black);
-                    border-style: none;
-                    color: var(--white);
-                    border: 1px solid var(--black);
-                    font-weight: 700;
-                    font-family: "Manrope", sans-serif;
-                    border-radius: 5px;
-                    text-transform: uppercase;
-                    cursor: none;
-
-                    &:hover{
-                        background-color: var(--white);
-                        color: var(--black);
-                    }
-                }
             }
         }
     }
@@ -518,6 +559,7 @@ section {
 .impressum{
     height: 100%;
     width: 100vw;
+    color: var(--black);
 
     &.active{
         display: flex;
@@ -539,11 +581,12 @@ section {
         height: calc(100% - 140px);
         overflow-y: scroll;
         margin-top: 80px;
-        padding: 0px 20px 60px 20px;
+        padding: 0px 20px 20px 20px;
 
         .datenschutzerklärung_header{
             font-size: var(--headingFontSize);
             margin-bottom: 8px;
+            font-weight: 900;
         }
         
         .datenschutzerklärung__big_header{
