@@ -595,4 +595,77 @@ body:has(#about.active) footer ul li:first-child,
 body:has(#impressum.active) header h1,
 body:has(#impressum.active) footer ul li:first-child {
   color: white;
+}
+
+@media (max-width: 599px) {
+  body {
+    cursor: auto;
+  }
+  #custom-cursor {
+    display: none;
+  }
+  section {
+    max-width: 100dvw;
+    height: 100dvh;
+  }
+  .gallery .gallery__container {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .gallery .gallery__container img {
+    height: auto;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .back-button {
+    top: 55px;
+  }
+  .projects {
+    padding: 100px 20px 0 20px;
+  }
+  .projects .project {
+    width: 80vw;
+    min-width: 80vw;
+  }
+  .about {
+    flex-direction: column;
+  }
+  .about .profile_image {
+    display: none;
+  }
+  .about .about_content {
+    margin-top: 60px;
+    padding: 0 20px 40px 20px;
+    max-height: calc(100vh - 60px);
+  }
+  .about .about_content .exhibitions_list li .description {
+    max-height: none;
+    opacity: 1;
+    padding: 8px 0 0 0;
+  }
+  .impressum .impressum_image {
+    display: none;
+  }
+  .impressum .impressum_datenschutz {
+    height: calc(100% - 80px);
+    margin-top: 60px;
+    padding: 0 20px 40px 20px;
+  }
+  nav .menu_container {
+    width: 65%;
+    padding: 0 20px !important;
+  }
+  #menu-button svg {
+    height: 28px;
+    width: 28px;
+  }
+  #nightmode-toggle .icon-sun,
+  #nightmode-toggle .icon-moon {
+    height: 24px !important;
+    width: 24px !important;
+  }
+  input, textarea, button {
+    cursor: auto;
+  }
 }/*# sourceMappingURL=styles.css.map */
