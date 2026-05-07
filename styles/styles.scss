@@ -283,9 +283,9 @@ footer{
     position: fixed;
     z-index: 299;
     left: 50%;
-    bottom: 10vh;
+    top: 10vh;
     height: auto;
-    width: calc(100vw - 20px);
+    width: calc(100vw - 40px);
     transform: translateX(-50%);
     opacity: 0;
     border: 1px solid var(--black);
