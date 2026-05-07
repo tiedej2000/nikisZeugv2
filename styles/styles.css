@@ -279,7 +279,6 @@ footer {
   height: fit-content;
   padding: 20px;
   font-size: var(--smallFontSize);
-  background-color: var(--white);
 }
 footer ul {
   display: flex;
@@ -696,6 +695,9 @@ body:has(#impressum.active) footer ul li:first-child {
   }
   body {
     cursor: auto;
+  }
+  footer {
+    background-color: var(--white);
   }
   #custom-cursor {
     display: none;
