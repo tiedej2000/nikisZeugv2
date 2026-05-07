@@ -275,6 +275,16 @@ footer{
     }
 }
 
+@keyframes infoSlideIn {
+    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+    to   { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes infoSlideOut {
+    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+    to   { transform: translateX(-50%) translateY(20px); opacity: 0; }
+}
+
 .info__mobile{
     background: var(--white);
     visibility: hidden;
@@ -283,14 +293,13 @@ footer{
     position: fixed;
     z-index: 299;
     left: 50%;
-    top: 10vh;
+    bottom: 80px;
     height: auto;
     width: calc(100vw - 40px);
-    transform: translateX(-50%);
-    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
     border: 1px solid var(--black);
-    transition: opacity 0.5s ease;
     border-radius: 3px;
+    pointer-events: none;
 }
 
 
@@ -881,7 +890,13 @@ body:has(#impressum.active) footer ul li:first-child {
 
     .info__mobile.active{
         visibility: visible;
-        opacity: 1;
+        pointer-events: auto;
+        animation: infoSlideIn 0.5s ease forwards;
+    }
+
+    .info__mobile.closing{
+        visibility: visible;
+        animation: infoSlideOut 0.5s ease forwards;
     }
 
     input, textarea, button { cursor: auto; }

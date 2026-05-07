@@ -130,6 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(()=>{
         infoCard.classList.remove('active')
+        infoCard.classList.add('closing')
+        setTimeout(() => {
+            infoCard.classList.remove('closing')
+        }, 500)
     },5000)
 })
 
@@ -137,6 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function switchSection(target) {
   if (document.querySelector(`#${target}`).classList.contains('active')) return
+  if (youtubeMode && target !== 'gallery') {
+    const iframe = document.querySelector('.gallery__youtube')
+    iframe.src = ''
+    gallery.classList.remove('youtube-mode')
+    youtubeMode = false
+  }
   const currentSection = document.querySelector('section.active')
   pageTransition()
 
@@ -163,6 +173,18 @@ const menuItems = document.querySelectorAll('.menu_container li')
 menuItems.forEach(item => {
   item.addEventListener('click', () => {
     closeMenu()
+    if (item.dataset.target === 'gallery') {
+      if (youtubeMode) {
+        const iframe = document.querySelector('.gallery__youtube')
+        iframe.src = ''
+        gallery.classList.remove('youtube-mode')
+        youtubeMode = false
+      }
+      images = galleryImages
+      currentIndex = 0
+      pageTransition()
+      setTimeout(() => showImage(0), 600)
+    }
     switchSection(item.dataset.target)
   })
 })
