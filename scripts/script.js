@@ -44,9 +44,11 @@ function prev() {
 }
 
 const gallery = document.querySelector('.gallery')
+let youtubeMode = false
 
 gallery.addEventListener('click', (e) => {
-   if (e.clientX > window.innerWidth / 2) {
+  if (youtubeMode) return
+  if (e.clientX > window.innerWidth / 2) {
     next()
   } else {
     prev()
@@ -156,6 +158,12 @@ menuItems.forEach(item => {
 })
 
 document.querySelector('.back-button').addEventListener('click', () => {
+  if (youtubeMode) {
+    const iframe = document.querySelector('.gallery__youtube')
+    iframe.src = ''
+    gallery.classList.remove('youtube-mode')
+    youtubeMode = false
+  }
   images = galleryImages
   currentIndex = 0
   switchSection('gallery')
@@ -164,6 +172,17 @@ document.querySelector('.back-button').addEventListener('click', () => {
 document.querySelectorAll('.preview, .link-button').forEach(el => {
   el.addEventListener('click', () => {
     const project = el.closest('.project')
+    const youtubeUrl = project ? project.dataset.youtube : null
+
+    if (youtubeUrl) {
+      const iframe = document.querySelector('.gallery__youtube')
+      iframe.src = youtubeUrl
+      gallery.classList.add('youtube-mode')
+      youtubeMode = true
+      switchSection('gallery')
+      return
+    }
+
     const key = project ? project.dataset.images : 'mfirits'
     images = projectImageSets[key] || mfiritsImages
     currentIndex = 0

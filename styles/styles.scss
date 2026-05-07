@@ -164,7 +164,7 @@ header{
             display: none;
             position: fixed;
             right: 0px;
-            padding: 0 0px 0 60px;
+            padding: 0 0px 0 40px;
             top: 50%;
             transform: translateY(-50%);
             text-align: right;
@@ -343,6 +343,7 @@ section {
 
 .submit-button{
     margin-bottom: 0px;
+    margin-left: 8px;
 }
 
 .gallery{
@@ -384,6 +385,27 @@ section {
             font-size: var(--regFontSize);
             margin-top: 8px;
             color: var(--black);
+        }
+
+        .gallery__youtube {
+            display: none;
+            height: 60vh;
+            width: calc(60vh * 16 / 9);
+            border: none;
+            border-radius: 5px;
+            box-shadow:
+                0 0px 8px rgba(0,0,0,0.1),
+                0 0px 20px rgba(0,0,0,0.05);
+        }
+    }
+
+    &.youtube-mode {
+        .gallery__container img,
+        .gallery__info {
+            display: none;
+        }
+        .gallery__youtube {
+            display: block;
         }
     }
 }
@@ -451,6 +473,10 @@ section {
     width: 100vw;
     gap: 20px;
     color: var(--black);
+
+    .about__hero-mobile {
+        display: none;
+    }
 
     &.active{
         display: flex;
@@ -577,6 +603,10 @@ section {
         display: flex;
     }
 
+    .impressum__hero-mobile {
+        display: none;
+    }
+
     .impressum_image{
         height: 100vh;
         width: auto;
@@ -624,10 +654,19 @@ section {
 }
 
 body:has(#about.active) header h1,
-body:has(#about.active) footer ul li:first-child,
-body:has(#impressum.active) header h1,
-body:has(#impressum.active) footer ul li:first-child {
+body:has(#impressum.active) header h1 {
   color: white;
+}
+
+@media (max-width: 599px) {
+  body:has(#about.active) header nav button svg line,
+  body:has(#impressum.active) header nav button svg line {
+    stroke: white;
+  }
+  body:has(#about.active) header nav button.active svg line,
+  body:has(#impressum.active) header nav button.active svg line {
+    stroke: var(--black);
+  }
 }
 
 @media(max-width:599px){
@@ -652,36 +691,75 @@ body:has(#impressum.active) footer ul li:first-child {
                 width: 100%;
                 object-fit: cover;
             }
+
+            .gallery__youtube {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
         }
     }
 
     .back-button {
-        top: 55px;
+        display: none;
     }
 
     .projects {
-        padding: 100px 20px 0 20px;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: calc(100vh - 110px);
+        margin-top: 60px;
+        padding: 0 20px 40px;
+        gap: 40px;
 
         .project {
-            width: 80vw;
-            min-width: 80vw;
+            width: 100%;
+            min-width: unset;
+            height: auto;
         }
     }
 
     .about {
         flex-direction: column;
 
-        .profile_image { display: none; }
+        .profile_image { 
+            display: none; 
+        }
+
+        .about__hero-mobile {
+            display: block;
+            width: 100%;
+            height: 35vh;
+            object-fit: cover;
+            object-position: top;
+        }
 
         .about_content {
-            margin-top: 60px;
-            padding: 0 20px 40px 20px;
-            max-height: calc(100vh - 60px);
+            margin-top: 0;
+            padding: 0px 20px 40px 20px;
+            flex: 1;
+            margin-bottom: 50px;
 
             .exhibitions_list li {
+                .info {
+                    flex-direction: column;
+                    gap: 2px;
+
+                    span:last-child {
+                        opacity: 0.5;
+                        font-size: var(--smallFontSize);
+                    }
+                }
+
                 .description {
                     max-height: none;
                     opacity: 1;
+                    padding: 8px 0 0 0;
+                }
+
+                &:hover .description {
+                    max-height: none;
                     padding: 8px 0 0 0;
                 }
             }
@@ -689,23 +767,37 @@ body:has(#impressum.active) footer ul li:first-child {
     }
 
     .impressum {
+        flex-direction: column;
+
         .impressum_image { display: none; }
 
+        .impressum__hero-mobile {
+            display: block;
+            width: 100%;
+            height: 35vh;
+            object-fit: cover;
+            object-position: bottom;
+            flex-shrink: 0;
+        }
+
         .impressum_datenschutz {
-            height: calc(100% - 80px);
-            margin-top: 60px;
-            padding: 0 20px 40px 20px;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            padding: 0px 20px 40px 20px;
+            flex: 1;
+            overflow-y: scroll;
+            max-height: none;
         }
     }
 
     nav .menu_container {
-        width: 65%;
+        width: 45%;
         padding: 0 20px !important;
     }
 
     #menu-button svg {
-        height: 28px;
-        width: 28px;
+        height: 24px;
+        width: 24px;
     }
 
     #nightmode-toggle .icon-sun,

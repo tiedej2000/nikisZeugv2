@@ -174,7 +174,7 @@ header nav .menu_container {
   display: none;
   position: fixed;
   right: 0px;
-  padding: 0 0px 0 60px;
+  padding: 0 0px 0 40px;
   top: 50%;
   transform: translateY(-50%);
   text-align: right;
@@ -356,6 +356,7 @@ section.closing {
 
 .submit-button {
   margin-bottom: 0px;
+  margin-left: 8px;
 }
 
 .gallery {
@@ -395,6 +396,21 @@ section.closing {
   font-size: var(--regFontSize);
   margin-top: 8px;
   color: var(--black);
+}
+.gallery .gallery__container .gallery__youtube {
+  display: none;
+  height: 60vh;
+  width: 106.6666666667vh;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1), 0 0px 20px rgba(0, 0, 0, 0.05);
+}
+.gallery.youtube-mode .gallery__container img,
+.gallery.youtube-mode .gallery__info {
+  display: none;
+}
+.gallery.youtube-mode .gallery__youtube {
+  display: block;
 }
 
 .projects {
@@ -450,6 +466,9 @@ section.closing {
   width: 100vw;
   gap: 20px;
   color: var(--black);
+}
+.about .about__hero-mobile {
+  display: none;
 }
 .about.active {
   display: flex;
@@ -559,6 +578,9 @@ section.closing {
 .impressum.active {
   display: flex;
 }
+.impressum .impressum__hero-mobile {
+  display: none;
+}
 .impressum .impressum_image {
   height: 100vh;
   width: auto;
@@ -600,12 +622,20 @@ section.closing {
 }
 
 body:has(#about.active) header h1,
-body:has(#about.active) footer ul li:first-child,
-body:has(#impressum.active) header h1,
-body:has(#impressum.active) footer ul li:first-child {
+body:has(#impressum.active) header h1 {
   color: white;
 }
 
+@media (max-width: 599px) {
+  body:has(#about.active) header nav button svg line,
+  body:has(#impressum.active) header nav button svg line {
+    stroke: white;
+  }
+  body:has(#about.active) header nav button.active svg line,
+  body:has(#impressum.active) header nav button.active svg line {
+    stroke: var(--black);
+  }
+}
 @media (max-width: 599px) {
   body {
     cursor: auto;
@@ -627,15 +657,27 @@ body:has(#impressum.active) footer ul li:first-child {
     -o-object-fit: cover;
        object-fit: cover;
   }
+  .gallery .gallery__container .gallery__youtube {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
   .back-button {
-    top: 55px;
+    display: none;
   }
   .projects {
-    padding: 100px 20px 0 20px;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100vh - 110px);
+    margin-top: 60px;
+    padding: 0 20px 40px;
+    gap: 40px;
   }
   .projects .project {
-    width: 80vw;
-    min-width: 80vw;
+    width: 100%;
+    min-width: unset;
+    height: auto;
   }
   .about {
     flex-direction: column;
@@ -643,31 +685,69 @@ body:has(#impressum.active) footer ul li:first-child {
   .about .profile_image {
     display: none;
   }
+  .about .about__hero-mobile {
+    display: block;
+    width: 100%;
+    height: 35vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
+  }
   .about .about_content {
-    margin-top: 60px;
-    padding: 0 20px 40px 20px;
-    max-height: calc(100vh - 60px);
+    margin-top: 0;
+    padding: 0px 20px 40px 20px;
+    flex: 1;
+    margin-bottom: 50px;
+  }
+  .about .about_content .exhibitions_list li .info {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .about .about_content .exhibitions_list li .info span:last-child {
+    opacity: 0.5;
+    font-size: var(--smallFontSize);
   }
   .about .about_content .exhibitions_list li .description {
     max-height: none;
     opacity: 1;
     padding: 8px 0 0 0;
   }
+  .about .about_content .exhibitions_list li:hover .description {
+    max-height: none;
+    padding: 8px 0 0 0;
+  }
+  .impressum {
+    flex-direction: column;
+  }
   .impressum .impressum_image {
     display: none;
   }
+  .impressum .impressum__hero-mobile {
+    display: block;
+    width: 100%;
+    height: 35vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: bottom;
+       object-position: bottom;
+    flex-shrink: 0;
+  }
   .impressum .impressum_datenschutz {
-    height: calc(100% - 80px);
-    margin-top: 60px;
-    padding: 0 20px 40px 20px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 0px 20px 40px 20px;
+    flex: 1;
+    overflow-y: scroll;
+    max-height: none;
   }
   nav .menu_container {
-    width: 65%;
+    width: 45%;
     padding: 0 20px !important;
   }
   #menu-button svg {
-    height: 28px;
-    width: 28px;
+    height: 24px;
+    width: 24px;
   }
   #nightmode-toggle .icon-sun,
   #nightmode-toggle .icon-moon {
