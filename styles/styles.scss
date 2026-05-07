@@ -654,11 +654,17 @@ section {
 }
 
 body:has(#about.active) header h1,
-body:has(#impressum.active) header h1 {
+body:has(#about.active) footer ul li:first-child,
+body:has(#impressum.active) header h1,
+body:has(#impressum.active) footer ul li:first-child {
   color: white;
 }
 
 @media (max-width: 599px) {
+  body:has(#about.active) footer ul li:first-child,
+  body:has(#impressum.active) footer ul li:first-child {
+    color: var(--black);
+  }
   body:has(#about.active) header nav button svg line,
   body:has(#impressum.active) header nav button svg line {
     stroke: white;
