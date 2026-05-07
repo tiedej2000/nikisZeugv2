@@ -284,13 +284,14 @@ footer{
     position: fixed;
     z-index: 299;
     left: 50%;
-    top: 10vh;
+    bottom: 10vh;
     height: auto;
     width: calc(100vw - 20px);
     transform: translateX(-50%);
     opacity: 0;
     border: 1px solid var(--black);
     transition: opacity 0.5s ease;
+    border-radius: 3px;
 }
 
 
