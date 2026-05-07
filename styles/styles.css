@@ -181,7 +181,7 @@ header nav .menu_container {
   color: var(--black);
   font-size: var(--regFontSize);
   font-weight: 500;
-  height: 100vh;
+  height: 100dvh;
   z-index: 200;
   flex-direction: column;
   justify-content: center;
@@ -729,9 +729,8 @@ body:has(#impressum.active) footer ul li:first-child {
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: calc(100vh - 110px);
     margin-top: 60px;
-    padding: 0 20px 40px;
+    padding: 0 20px 120px;
     gap: 40px;
   }
   .projects .project {
