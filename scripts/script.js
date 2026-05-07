@@ -191,6 +191,15 @@ document.querySelectorAll('.preview, .link-button').forEach(el => {
   })
 })
 
+/* projects horizontal scroll */
+
+const projectsSection = document.querySelector('.projects')
+
+projectsSection.addEventListener('wheel', (e) => {
+  e.preventDefault()
+  projectsSection.scrollLeft += e.deltaY + e.deltaX
+}, { passive: false })
+
 /* nightmode */
 
 const toggle = document.querySelector('#nightmode-toggle')

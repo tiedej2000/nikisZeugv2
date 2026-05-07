@@ -415,7 +415,7 @@ section.closing {
 
 .projects {
   height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
   overflow-x: scroll;
   scrollbar-width: none;
   padding: 120px 20px 0px 20px;
@@ -426,7 +426,8 @@ section.closing {
   display: flex;
 }
 .projects .project {
-  width: 25vw;
+  width: 27.5vw;
+  flex-shrink: 0;
   height: 100%;
   color: var(--black);
 }
@@ -456,9 +457,29 @@ section.closing {
 .projects .project .project_content .preview img:hover {
   border: 1px solid var(--black);
 }
-.projects .project .project_content iframe {
+.projects .project .project_content .ph_heading {
+  height: clamp(1.5rem, 2.4vw, 3.5rem);
+  background-color: rgba(169, 169, 169, 0.6);
   width: 100%;
-  height: 245px;
+  border-radius: 2px;
+}
+.projects .project .project_content .text {
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.projects .project .project_content .ph_text {
+  height: 1rem;
+  background-color: rgba(169, 169, 169, 0.6);
+  width: 100%;
+  border-radius: 2px;
+}
+.projects .project .project_content .ph_preview {
+  background-color: rgba(169, 169, 169, 0.6);
+  height: 270px;
+  width: 100%;
+  border-radius: 2px;
+  display: grid;
+  place-content: center;
 }
 
 .about {
@@ -707,7 +728,7 @@ body:has(#impressum.active) footer ul li:first-child {
   }
   .about .about_content {
     margin-top: 0;
-    padding: 0px 20px 40px 20px;
+    padding: 0px 20px 80px 20px;
     flex: 1;
     margin-bottom: 50px;
   }
@@ -747,7 +768,7 @@ body:has(#impressum.active) footer ul li:first-child {
   .impressum .impressum_datenschutz {
     margin-top: 20px;
     margin-bottom: 50px;
-    padding: 0px 20px 40px 20px;
+    padding: 0px 20px 80px 20px;
     flex: 1;
     overflow-y: scroll;
     max-height: none;
@@ -759,6 +780,9 @@ body:has(#impressum.active) footer ul li:first-child {
   #menu-button svg {
     height: 24px;
     width: 24px;
+  }
+  header nav .menu_container li {
+    padding-right: 0;
   }
   #nightmode-toggle .icon-sun,
   #nightmode-toggle .icon-moon {
