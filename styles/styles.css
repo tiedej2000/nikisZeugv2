@@ -279,6 +279,7 @@ footer {
   height: fit-content;
   padding: 20px;
   font-size: var(--smallFontSize);
+  background-color: var(--white);
 }
 footer ul {
   display: flex;
@@ -800,6 +801,7 @@ body:has(#impressum.active) footer ul li:first-child {
   }
   header nav .menu_container li {
     padding-right: 0;
+    margin-bottom: 5px;
   }
   #nightmode-toggle .icon-sun,
   #nightmode-toggle .icon-moon {
