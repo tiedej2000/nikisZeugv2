@@ -288,12 +288,24 @@ footer ul {
 }
 
 @keyframes infoSlideIn {
-  from { transform: translateX(-50%) translateY(20px); opacity: 0; }
-  to   { transform: translateX(-50%) translateY(0); opacity: 1; }
+  from {
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
 }
 @keyframes infoSlideOut {
-  from { transform: translateX(-50%) translateY(0); opacity: 1; }
-  to   { transform: translateX(-50%) translateY(20px); opacity: 0; }
+  from {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+  }
 }
 .info__mobile {
   background: var(--white);
@@ -769,6 +781,7 @@ body:has(#impressum.active) footer ul li:first-child {
   .about .about_content .exhibitions_list li .info {
     flex-direction: column;
     gap: 2px;
+    font-weight: 700;
   }
   .about .about_content .exhibitions_list li .info span:last-child {
     opacity: 0.5;

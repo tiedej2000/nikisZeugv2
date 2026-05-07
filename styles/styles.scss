@@ -822,6 +822,7 @@ body:has(#impressum.active) footer ul li:first-child {
                 .info {
                     flex-direction: column;
                     gap: 2px;
+                    font-weight: 700;
 
                     span:last-child {
                         opacity: 0.5;
