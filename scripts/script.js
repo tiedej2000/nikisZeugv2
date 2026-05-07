@@ -2,29 +2,36 @@ let currentIndex = 0
 let images = []
 let galleryImages = []
 let mfiritsImages = []
+let filmcollagenImages = []
+
+const projectImageSets = {}
 
 Promise.all([
   fetch('data/images.json').then(res => res.json()),
-  fetch('data/mfirits.json').then(res => res.json())
-]).then(([gallery, mfirits]) => {
+  fetch('data/mfirits.json').then(res => res.json()),
+  fetch('data/filmcollagen.json').then(res => res.json())
+]).then(([gallery, mfirits, filmcollagen]) => {
   galleryImages = gallery
   mfiritsImages = mfirits
+  filmcollagenImages = filmcollagen
+  projectImageSets['mfirits'] = mfiritsImages
+  projectImageSets['filmcollagen'] = filmcollagenImages
   images = galleryImages
   showImage(currentIndex)
 })
 
-  /* Gallery Funktionen - nächtes und vorheriges Bild */
+/* Gallery Funktionen - nächtes und vorheriges Bild */
 
-  function showImage(index){
-    const img = document.querySelector('.gallery__container img')
-    const imgYear = document.querySelector('.gallery__info .year')
-    const imgTitle = document.querySelector('.gallery__info .title')
+function showImage(index){
+  const img = document.querySelector('.gallery__container img')
+  const imgYear = document.querySelector('.gallery__info .year')
+  const imgTitle = document.querySelector('.gallery__info .title')
 
-    img.src = images[index].src
-    img.alt = images[index].alt
-    imgYear.textContent = images[index].year
-    imgTitle.textContent = images[index].title
-  }
+  img.src = images[index].src
+  img.alt = images[index].alt
+  imgYear.textContent = images[index].year
+  imgTitle.textContent = images[index].title
+}
 
   function next() {
   currentIndex = (currentIndex + 1) % images.length
@@ -156,7 +163,9 @@ document.querySelector('.back-button').addEventListener('click', () => {
 
 document.querySelectorAll('.preview, .link-button').forEach(el => {
   el.addEventListener('click', () => {
-    images = mfiritsImages
+    const project = el.closest('.project')
+    const key = project ? project.dataset.images : 'mfirits'
+    images = projectImageSets[key] || mfiritsImages
     currentIndex = 0
     showImage(0)
     switchSection('gallery')

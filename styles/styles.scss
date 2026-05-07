@@ -4,6 +4,7 @@
     --lightBoxShadow: 0 0 8px rgba(0,0,0,0.05);
 
     --headingFontSize: clamp(1rem, 1.8vw, 2rem);
+    --projectHeadingFontSize: clamp(1.4rem, 2.4vw, 2.4rem);
     --regFontSize: clamp(0.8rem, 1vw, 1rem);
     --smallFontSize: clamp(0.6rem, 0.8vw, 0.875rem);
 }
@@ -215,6 +216,9 @@ header{
                 display: inline-block;
                 transform: translateX(0);
                 transition: transform 0.3s ease;
+                font-size: var(--headingFontSize);
+                text-transform: uppercase;
+                font-weight: 900;
             }
 
             li:hover span{
@@ -299,9 +303,7 @@ section {
     display: flex;
     gap: 5px;
     align-items: center;
-    padding: 5px 10px;
-    margin: 20px 0 12px 0;
-    border: 1px solid var(--black);
+    margin: 20px 0 0 0;
     font-size: var(--regFontSize);
     width: fit-content;
     color: var(--black);
@@ -323,13 +325,9 @@ section {
 
 .link-button, .submit-button{
     margin-top: 0px;
-    width: 100%;
-    justify-content: space-between;
-    background-color: var(--black);
-    color: var(--white);
 
     svg{
-        fill: var(--white);
+        fill: var(--black);
     }
 
     &:hover svg{
@@ -339,7 +337,7 @@ section {
 
 .back-button{
     position: absolute;
-    top: 70px;
+    top: 75px;
     left: 20px;
 }
 
@@ -395,7 +393,7 @@ section {
     width: 100vw;
     overflow-x: scroll;
     scrollbar-width: none;
-    padding: 140px 20px 0px 20px;
+    padding: 120px 20px 0px 20px;
     gap: 20px;
     position: relative;
 
@@ -407,34 +405,42 @@ section {
         width: 25vw;
         height: 100%;
         color: var(--black);
-        
+         
         .project_content{
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             
             .heading{
-                font-size: var(--headingFontSize);
+                font-size: var(--projectHeadingFontSize);
                 font-weight: 900;
                 line-height: 1.1;
+                margin-bottom: 0;
             }
 
             .text{
                 font-size: var(--regFontSize);
-                line-height: 1.6;
+                line-height: 1.3;
                 text-align: justify;
+                margin-bottom: 4px;
             }
 
             .preview{
                 img{
                     border: 1px solid var(--white);
                     width: 100%;
+                    height: 100%;
                     transition: all 0.3s ease;
 
                     &:hover{
                         border: 1px solid var(--black);
                     }
                 }
+            }
+
+            iframe{
+                width: 100%;
+                height: 245px;
             }
         }
     }
@@ -529,8 +535,7 @@ section {
                 margin: 0;
                 font-family: "Manrope", sans-serif;
                 cursor: none;
-                padding: 10px;
-                border: 1px solid var(--black);
+              
                 margin-bottom: 20px;
 
                 input, textarea{
