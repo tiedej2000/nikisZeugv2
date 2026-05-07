@@ -287,6 +287,7 @@ footer{
 
 .info__mobile{
     background: var(--white);
+    color: var(--black);
     visibility: hidden;
     padding: 10px;
     text-align: center;
@@ -300,6 +301,10 @@ footer{
     border: 1px solid var(--black);
     border-radius: 3px;
     pointer-events: none;
+
+    svg{
+        fill: var(--black);
+    }
 }
 
 
@@ -487,13 +492,17 @@ section {
 
             .preview{
                 img{
-                    border: 1px solid var(--white);
                     width: 100%;
                     height: 100%;
-                    transition: all 0.3s ease;
+                    border-radius: 3px;
+                    box-shadow:
+                        0 0px 8px rgba(0,0,0,0.1),
+                        0 0px 20px rgba(0,0,0,0.05);
+                    outline: 1px solid transparent;
+                    transition: outline-color 0.3s ease;
 
                     &:hover{
-                        border: 1px solid var(--black);
+                        outline-color: var(--black);
                     }
                 }
             }
@@ -787,7 +796,8 @@ body:has(#impressum.active) footer ul li:first-child {
         overflow-x: hidden;
         overflow-y: scroll;
         margin-top: 60px;
-        padding: 0 20px 120px;
+        padding: 0 20px 80px 20px;
+        height: calc(100dvh - 60px);
         gap: 40px;
 
         .project {
