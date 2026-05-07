@@ -643,6 +643,10 @@ body:has(#impressum.active) footer ul li:first-child {
   }
 }
 @media (max-width: 599px) {
+  html, body {
+    overflow: hidden;
+    height: 100dvh;
+  }
   body {
     cursor: auto;
   }
@@ -652,6 +656,7 @@ body:has(#impressum.active) footer ul li:first-child {
   section {
     max-width: 100dvw;
     height: 100dvh;
+    overflow: hidden;
   }
   .gallery .gallery__container {
     width: 100%;
