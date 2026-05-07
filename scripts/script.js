@@ -121,6 +121,16 @@ function pageTransition() {
 
 document.addEventListener('DOMContentLoaded', () => {
   pageTransition()
+
+  const infoCard = document.querySelector('.info__mobile')
+
+    setTimeout(()=>{
+        infoCard.classList.add('active')
+    },1500)
+
+    setTimeout(()=>{
+        infoCard.classList.remove('active')
+    },5000)
 })
 
 /* function to switch sections */
